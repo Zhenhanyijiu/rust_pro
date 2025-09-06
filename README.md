@@ -73,30 +73,55 @@ let s2=&s1;
   
 ## cargo 使用指南
 
-1. 上手
+### 上手
    - cargo build --release 编译成release版本
    - cargo run --release release版本
    - 如果你的程序在跑性能测试 benchmark，一定要使用 Release 模式，因为该模式下，程序会做大量性能优化
 
-2. 基础
-   - 为啥需要cargo
-     - Rust 有两种类型的包: 库包和二进制包，前者是我们经常使用的依赖包，用于被其它包所引入，而后者是一个应用服务，可以编译成二进制可执行文件进行运行
-     - 引入两个元数据文件，包含项目的方方面面信息: Cargo.toml 和 Cargo.lock
-     - 获取和构建项目的依赖，例如 Cargo.toml 中的依赖包版本描述，以及从 crates.io 下载包
-     - 调用 rustc (或其它编译器) 并使用的正确的参数来构建项目，例如 cargo build
-     - 引入一些惯例，让项目的使用更加简单
-   - 下载并构建 Package
-     - $ git clone https://github.com/rust-lang/regex.git
-     - $ cd regex
-     -  cargo build
-   - 添加依赖
-     -  [dependencies]\
+### 基础
+#### 为啥需要cargo
+- Rust 有两种类型的包: 库包和二进制包，前者是我们经常使用的依赖包，用于被其它包所引入，而后者是一个应用服务，可以编译成二进制可执行文件进行运行
+- 引入两个元数据文件，包含项目的方方面面信息: Cargo.toml 和 Cargo.lock
+- 获取和构建项目的依赖，例如 Cargo.toml 中的依赖包版本描述，以及从 crates.io 下载包
+- 调用 rustc (或其它编译器) 并使用的正确的参数来构建项目，例如 cargo build
+- 引入一些惯例，让项目的使用更加简单
+#### 下载并构建 Package
+- git clone https://github.com/rust-lang/regex.git
+- cd regex
+- cargo build
+#### 添加依赖
+-  [dependencies]\
         time = "0.1.12"
-   - package 目录结构
-     - 如下：
-        ![package](./package.png)    
+#### package 目录结构
+如下：
+- Cargo.lock
+- Cargo.toml
+- src/
+  - lib.rs
+  - main.rs
+  - bin/
+    - named-executable.rs
+    - another-executable.rs
+    - multi-file-executable/
+      - main.rs
+      - some_module.rs
+- benches/
+  - large-input.rs
+  - multi-file-bench/
+    - main.rs
+    - bench_module.rs
+- examples/
+  - simple.rs
+  - multi-file-example/
+    - main.rs
+    - ex_module.rs
+- tests/
+  - some-intergration-tests.rs
+  - multi-file-test/
+    - main.rs
+    - test_module.rs
 
-3. 进阶
+### 进阶
    - 指定依赖项
      - 从其它注册服务引入依赖包\
         [registries]\
@@ -142,10 +167,12 @@ let s2=&s1;
     - // 绑定新变量 `p`，同时对 `Point` 进行解构 [let p @ Point {x: px, y: py } = Point {x: 10, y: 23};]
 
 ### 结构体方法
+
 - self、&self 和 &mut self
   - self 表示 Rectangle 的所有权转移到该方法中，这种形式用的较少
   - &self 表示该方法对 Rectangle 的不可变借用
   - &mut self 表示可变借用
+
 ### 泛型
 - 显式地指定泛型的类型参数
 - 为具体的泛型类型实现方法
@@ -168,5 +195,6 @@ let s2=&s1;
     - 使用特征约束有条件地实现方法或特征
     - 函数返回中的 impl Trait
     - 关于特征实现与定义的位置，有一条非常重要的原则：如果你想要为类型 A 实现特征 T，那么 A 或者 T 至少有一个是在当前作用域中定义的！
+
 ### 结构体 有三种结构体
 - 单元结构体、元组结构体、带字段的结构体；       
