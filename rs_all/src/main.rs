@@ -5,8 +5,8 @@ use ut::{client_tcp, server_tcp, test_file, test_file2, test_vec_str_string, yuf
 
 fn main() {
     println!("----------- ");
-    // yufa();
-    // test_vec_str_string();
+    yufa();
+    test_vec_str_string();
     test_fang_xing();
     // let argv: Vec<String> = std::env::args().collect();
     // let role = &argv[1];
