@@ -1,9 +1,13 @@
 [package]
-name = "rs_mod2"
+name = "bls"
 version = "0.1.0"
 edition = "2021"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-rand = "~0.3.14"
+bn = "0.4.3"
+rust-crypto = "^0.2"
+num-bigint = "0.4.3"
+rand = "0.9.2"
+serde = { version = "1.0", features = ["derive"] }

@@ -1,5 +1,5 @@
 use rand::{self, Rng};
-use study::{array, base, slice};
+use rs_mod2::{array, base, slice};
 // extern crate rand;
 
 fn main() {
