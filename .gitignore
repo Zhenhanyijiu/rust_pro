@@ -2,4 +2,4 @@
 /serde
 target
 Cargo.lock
-bin
+
