@@ -79,3 +79,16 @@ pub mod bfor {
         for i in arr2.iter_mut() {}
     }
 }
+
+fn test_vec1() {
+    let mut v = vec![1, 2, 3];
+    println!("vec v = {:?}", v);
+    for i in &mut v {
+        *i += 10
+    }
+    println!("vec v = {:?}", v);
+}
+pub fn test_vector() {
+    println!("\n------ This is an test function test_vector.");
+    test_vec1();
+}

@@ -31,3 +31,33 @@ pub fn test_moshipipei() {
     process_message(msg3);
     process_message(msg4);
 }
+
+#[derive(Debug)]
+struct Point {
+    x: i32,
+    y: i32,
+}
+fn test_at_binding2() {
+    match 1 {
+        num @ (1 | 2) => {
+            println!("=== num {}", num);
+        }
+        _ => {}
+    }
+}
+
+pub fn test_at_binding() {
+    println!("\n------ This is a test function in at_binding module.");
+    // 绑定新变量 `p`，同时对 `Point` 进行解构
+    let p @ Point { x: px, y: py } = Point { x: 10, y: 23 };
+    println!("x: {}, y: {}", px, py);
+    println!("{:?}", p);
+
+    let point = Point { x: 10, y: 5 };
+    if let p @ Point { x: 10, y } = point {
+        println!("x is 10 and y is {} in {:?}", y, p);
+    } else {
+        println!("x was not 10 :(");
+    }
+    test_at_binding2()
+}
