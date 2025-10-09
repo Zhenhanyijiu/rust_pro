@@ -1,7 +1,7 @@
 use std::io::{self, BufRead, Read, Write};
 use std::net::TcpStream;
 
-fn main() -> io::Result<()> {
+fn main_1() -> io::Result<()> {
     // 连接到服务端
     let mut stream = TcpStream::connect("127.0.0.1:8080")?;
     println!("已连接到服务端");
@@ -37,4 +37,32 @@ fn main() -> io::Result<()> {
     }
 
     Ok(())
+}
+
+fn main_2() -> io::Result<()> {
+    let mut stream = TcpStream::connect("127.0.0.1:8080")?;
+    println!("已连接到服务端");
+    let mut i = 1;
+    loop {
+        let message = format!("rust language {}", i);
+        // 发送消息到服务端
+        stream.write_all(message.as_bytes())?;
+
+        // 接收服务端的响应
+        let mut buffer = [0; 1024];
+        let n = stream.read(&mut buffer)?;
+        let response = String::from_utf8_lossy(&buffer[..n]);
+        println!("服务端响应: {}", response);
+        i = i + 1;
+        if i == 100 {
+            break;
+        }
+    }
+
+    Ok(())
+}
+
+fn main() {
+    // _ = main_1();
+    _ = main_2();
 }
