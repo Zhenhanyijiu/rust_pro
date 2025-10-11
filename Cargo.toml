@@ -1,0 +1,26 @@
+[package]
+name = "rust_pro"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+network= { path = "network" }
+rs_all={ path = "rs_all" }
+rs_mod={ path = "rs_mod" }
+rs_mod2={ path = "rs_mod2" }
+rs_pac={ path = "rs_pac" }
+rs_std={ path = "rs_std" }
+
+
+[workspace]
+members = [
+    ".",
+    "bls",
+    "network",  
+    "rs_all",  
+    "rs_mod",
+    "rs_mod2",
+    "rs_pac",
+    "rs_std",
+]
+exclude = ["bls"]

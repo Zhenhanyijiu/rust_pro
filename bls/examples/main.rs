@@ -1,7 +1,7 @@
 extern crate bls;
 use bls::Bls;
 
-fn test_bls() {
+pub fn test_bls() {
     let mut bs = bls::newBls();
     let msg = String::from("hello");
     bs.hash_to_g2(&msg);
